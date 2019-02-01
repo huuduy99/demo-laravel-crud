@@ -12,7 +12,10 @@ https://sutara79-laravel.herokuapp.com/
 
 ## Step
 - rename .env.examaple to .env
-- run command : composer install --ignore-platform-reqs
+- composer install --ignore-platform-reqs
+- php artisan key:generate
+- php artisan config:cache
+- comment line (41->43) in CheckLocale
 
 
 ## Documentation
