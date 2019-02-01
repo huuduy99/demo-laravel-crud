@@ -10,6 +10,10 @@ My practice for basic CRUD of Laravel 5.7 with Heroku.
 ## Demo
 https://sutara79-laravel.herokuapp.com/
 
+## Step
+- rename .env.examaple to .env
+- run command : composer install --ignore-platform-reqs
+
 
 ## Documentation
 (Japanese)
