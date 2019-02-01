@@ -16,6 +16,10 @@ https://sutara79-laravel.herokuapp.com/
 - php artisan key:generate
 - php artisan config:cache
 - comment line (41->43) in CheckLocale
+- update 
+    DB_DATABASE=homestead
+    DB_USERNAME=root
+    DB_PASSWORD=
 
 
 ## Documentation
