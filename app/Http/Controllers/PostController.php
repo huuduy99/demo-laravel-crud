@@ -51,7 +51,7 @@ class PostController extends Controller
         $post->body = $request->body;
         $post->user_id = $request->user()->id;
         $post->save();
-        return redirect('posts/'.$post->id)->with('my_status', __('Posted new article.'));
+        return redirect('posts/' . $post->id)->with('my_status', __('Posted new article.'));
     }
 
     /**
@@ -68,8 +68,9 @@ class PostController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Post  $post
+     * @param  \App\Post $post
      * @return \Illuminate\Http\Response
+     * @throws \Illuminate\Auth\Access\AuthorizationException
      */
     public function edit(Post $post)
     {
@@ -81,8 +82,9 @@ class PostController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \App\Http\Requests\StorePost $request
-     * @param  \App\Post  $post
+     * @param  \App\Post $post
      * @return \Illuminate\Http\Response
+     * @throws \Illuminate\Auth\Access\AuthorizationException
      */
     public function update(StorePost $request, Post $post)
     {
@@ -96,8 +98,9 @@ class PostController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Post  $post
+     * @param  \App\Post $post
      * @return \Illuminate\Http\Response
+     * @throws \Illuminate\Auth\Access\AuthorizationException
      */
     public function destroy(Post $post)
     {

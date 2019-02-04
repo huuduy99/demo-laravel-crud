@@ -5,11 +5,13 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\User;
 use App\Http\Requests\StoreUser;
+use GuzzleHttp\Client;
 
 class UserController extends Controller
 {
     /**
-     * 各アクションの前に実行させるミドルウェア
+     * Middleware to be executed before each action
+     *
      */
     public function __construct()
     {
@@ -21,12 +23,22 @@ class UserController extends Controller
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return \Psr\Http\Message\StreamInterface
      */
     public function index()
     {
-        $users = User::paginate(5);
-        return view('users.index', ['users' => $users]);
+//        return User::all();
+
+        $client = new Client();
+        $url = "https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=10.801328,%20106.711377&radius=1500&type=restaurant&keyword=c%C6%A1m%20chay&key=AIzaSyCbf6UrIEcCbH55PRrlNLSyaHAil7O6fwM";
+        $res = $client->get($url);
+//        echo $res->getStatusCode(); // 200
+//        echo $res->getBody();
+
+        return $res->getBody();
+
+//        $users = User::paginate(5);
+//        return view('users.index', ['users' => $users]);
     }
 
     /**
@@ -52,7 +64,7 @@ class UserController extends Controller
         $user->email = $request->email;
         $user->password = $request->password;
         $user->save();
-        return redirect('users/'.$user->id)->with('my_status', __('Created new user.'));
+        return redirect('users/' . $user->id)->with('my_status', __('Created new user.'));
     }
 
     /**
@@ -74,6 +86,7 @@ class UserController extends Controller
      *
      * @param  \App\User $user
      * @return \Illuminate\Http\Response
+     * @throws \Illuminate\Auth\Access\AuthorizationException
      */
     public function edit(User $user)
     {
@@ -84,9 +97,10 @@ class UserController extends Controller
     /**
      * Update the specified resource in storage.
      *
-      * @param  \Illuminate\Http\Request  $request
+     * @param  \Illuminate\Http\Request $request
      * @param  \App\User $user
      * @return \Illuminate\Http\Response
+     * @throws \Illuminate\Auth\Access\AuthorizationException
      */
     public function update(Request $request, User $user)
     {
@@ -99,7 +113,7 @@ class UserController extends Controller
 
         $user->name = $request->name;
         $user->save();
-        return redirect('users/'.$user->id)->with('my_status', __('Updated a user.'));
+        return redirect('users/' . $user->id)->with('my_status', __('Updated a user.'));
     }
 
     /**
@@ -107,6 +121,7 @@ class UserController extends Controller
      *
      * @param  \App\User $user
      * @return \Illuminate\Http\Response
+     * @throws \Illuminate\Auth\Access\AuthorizationException
      */
     public function destroy(User $user)
     {
