@@ -55,14 +55,6 @@
                         </a>
                     </li>
 
-                    <li class="nav-item @if (my_is_current_controller('province')) active @endif">
-                        <a class="nav-link" href="{{ url('province') }}">
-                            {{ __('import xls') }}
-                            @if (my_is_current_controller('province'))
-                                <span class="sr-only">(current)</span>
-                            @endif
-                        </a>
-                    </li>
                 </ul>
 
                 {{-- Navbarの右側 --}}

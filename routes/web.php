@@ -30,4 +30,4 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::resource('users', 'UserController');
 Route::resource('posts', 'PostController');
 
-Route::resource('province', 'ProvinceController');
+Route::resource('raw_address', 'RawAddressController');

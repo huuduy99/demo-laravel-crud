@@ -14,6 +14,8 @@ class DatabaseSeeder extends Seeder
         $this->call([
             UsersTableSeeder::class,
             PostsTableSeeder::class,
+            RawAddressSeeder::class,
+            RawProvinceSeeder::class
         ]);
     }
 }

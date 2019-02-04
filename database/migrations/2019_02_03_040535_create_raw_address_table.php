@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateProvinceTable extends Migration
+class CreateRawAddressTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class CreateProvinceTable extends Migration
      */
     public function up()
     {
-        Schema::create('province', function (Blueprint $table) {
+        Schema::create('raw_address', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name');
             $table->string('code');
@@ -33,6 +33,6 @@ class CreateProvinceTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('province');
+        Schema::dropIfExists('raw_address');
     }
 }
