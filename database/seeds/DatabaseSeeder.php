@@ -15,7 +15,10 @@ class DatabaseSeeder extends Seeder
             UsersTableSeeder::class,
             PostsTableSeeder::class,
             RawAddressSeeder::class,
-            RawProvinceSeeder::class
+            RawProvinceSeeder::class,
+            RawChildDistrictTypeSeeder::class,
+            RawDistrictSeeder::class,
+            RawWardSeed::class
         ]);
     }
 }
